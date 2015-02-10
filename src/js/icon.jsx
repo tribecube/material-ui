@@ -16,7 +16,12 @@ var Icon = React.createClass({
       iconClassName = isMuiCustomIcon ? icon : mdfiClassName,
       classes = this.getClasses('mui-icon ' + iconClassName);
 
-    return (
+    if(icon.indexOf("fa fa")>-1) {
+      classes="mui-icon "+icon;
+    }
+
+
+return (
       <span {...other} className={classes} />
     );
   }
