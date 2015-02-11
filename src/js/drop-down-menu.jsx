@@ -30,7 +30,9 @@ var DropDownMenu = React.createClass({
   },
 
   componentClickAway: function() {
-    this.setState({ open: false });
+    if (this.state.open === true) {
+      this.setState({open: false});
+    }
   },
 
   componentDidMount: function() {

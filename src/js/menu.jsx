@@ -122,6 +122,35 @@ var Menu = React.createClass({
   },
 
   componentDidUpdate: function(prevProps, prevState) {
+
+    var el = this.getDOMNode();
+    var newWidth = 0;
+    var newHeight = KeyLine.Desktop.GUTTER_LESS;
+    for (var ix = 0; ix < el.childNodes.length; ix++) {
+      if (el.childNodes[ix].childNodes) {
+        for (var jx = 0; jx < el.childNodes[ix].childNodes.length; jx++) {
+          var aNode = el.childNodes[ix].childNodes[jx];
+          newHeight += aNode.offsetHeight;
+          var widthSpacing = $(aNode).outerWidth(true) - $(aNode).width();
+          for (var kx = 0; kx < aNode.childNodes.length; kx++) {
+            var innerNode = aNode.childNodes[kx];
+            var testWidth = innerNode.offsetWidth + widthSpacing;
+            if (testWidth > newWidth) {
+              newWidth = testWidth;
+            }
+          }
+        }
+      }
+    }
+
+    var menuWidth = this.props.autoWidth ? KeyLine.getIncrementalDim(newWidth) + 'px' : '100%';
+
+    //Update the menu width
+    el.style.width = menuWidth;
+
+    //Open the menu
+    this._initialMenuHeight = newHeight;
+
     if (this.props.visible !== prevProps.visible) this._renderVisibility();
   },
 

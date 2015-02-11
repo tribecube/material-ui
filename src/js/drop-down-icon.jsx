@@ -23,7 +23,9 @@ var DropDownIcon = React.createClass({
   },
 
   componentClickAway: function() {
-    this.setState({ open: false });
+    if (this.state.open === true) {
+      this.setState({open: false});
+    }
   },
 
   render: function() {

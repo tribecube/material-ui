@@ -1,0 +1,1 @@
+..\node_modules\.bin\browserify.cmd -x react index.js -s mui -o ../../../libs/material-ui.js
