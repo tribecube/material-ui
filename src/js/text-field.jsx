@@ -16,7 +16,8 @@ var TextField = React.createClass({
     onBlur: React.PropTypes.func,
     onChange: React.PropTypes.func,
     onFocus: React.PropTypes.func,
-    type: React.PropTypes.string
+    type: React.PropTypes.string,
+    heightSpacer: React.PropTypes.number
   },
 
   getDefaultProps: function() {
@@ -192,7 +193,7 @@ var TextField = React.createClass({
   },
 
   _handleTextAreaHeightChange: function(e, height) {
-    var newHeight = height + 24;
+    var newHeight = height + ((typeof this.props.heightSpacer !== "undefined") ? this.props.heightSpacer : 24);
     if (this.props.floatingLabelText) newHeight += 24;
     this.getDOMNode().style.height = newHeight + 'px';
   },
