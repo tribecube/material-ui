@@ -13,7 +13,8 @@ var DropDownIcon = React.createClass({
 
   propTypes: {
     onChange: React.PropTypes.func,
-    menuItems: React.PropTypes.array.isRequired
+    menuItems: React.PropTypes.array.isRequired,
+    menuPosition: React.PropTypes.array
   },
 
   getInitialState: function() {
@@ -38,7 +39,13 @@ var DropDownIcon = React.createClass({
           <div className="mui-menu-control" onClick={this._onControlClick}>
               <Icon icon={this.props.icon} />
           </div>
-          <Menu ref="menuItems" menuItems={this.props.menuItems} hideable={true} visible={this.state.open} onItemClick={this._onMenuItemClick} />
+          <Menu ref="menuItems"
+            menuItems={this.props.menuItems}
+            hideable={true}
+            visible={this.state.open}
+            onItemClick={this._onMenuItemClick}
+            menuPosition={this.props.menuPosition}
+          />
         </div>
     );
   },

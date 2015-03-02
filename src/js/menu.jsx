@@ -92,7 +92,8 @@ var Menu = React.createClass({
     selectedIndex: React.PropTypes.number,
     hideable: React.PropTypes.bool,
     visible: React.PropTypes.bool,
-    zDepth: React.PropTypes.number
+    zDepth: React.PropTypes.number,
+    menuPosition: React.PropTypes.array
   },
 
   getInitialState: function() {
@@ -155,7 +156,9 @@ var Menu = React.createClass({
   },
 
   render: function() {
-    var classes = this.getClasses('mui-menu', {
+    var topBottom = (this.props.menuPosition) ? this.props.menuPosition[0] : "center";
+    var rightLeft = (this.props.menuPosition) ? this.props.menuPosition[1] : "right";
+    var classes = this.getClasses('mui-menu ' + topBottom + ' ' + rightLeft, {
       'mui-menu-hideable': this.props.hideable,
       'mui-visible': this.props.visible
     });
