@@ -67,6 +67,7 @@ var DropDownMenu = React.createClass({
           menuItems={this.props.menuItems}
           hideable={true}
           visible={this.state.open}
+          menuPosition={this.props.menuPosition}
           onItemClick={this._onMenuItemClick} />
       </div>
     );
