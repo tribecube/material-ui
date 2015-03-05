@@ -14,7 +14,14 @@ var DropDownIcon = React.createClass({
   propTypes: {
     onChange: React.PropTypes.func,
     menuItems: React.PropTypes.array.isRequired,
-    menuPosition: React.PropTypes.array
+    menuPosition: React.PropTypes.array,
+    menuZDepth: React.PropTypes.number
+  },
+
+  getDefaultProps: function() {
+    return {
+      menuZDepth: 1
+    };
   },
 
   getInitialState: function() {
@@ -45,6 +52,7 @@ var DropDownIcon = React.createClass({
             visible={this.state.open}
             onItemClick={this._onMenuItemClick}
             menuPosition={this.props.menuPosition}
+            zDepth={this.props.menuZDepth}
           />
         </div>
     );
