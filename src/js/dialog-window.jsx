@@ -63,7 +63,7 @@ var DialogWindow = React.createClass({
           {this.props.children}
           {actions}
         </Paper>
-        <Overlay show={this.state.open} onTouchTap={this._handleOverlayTouchTap} />
+        <Overlay show={this.state.open} onTouchTap={this._handleOverlayTouchTap} onClick={this._handleOverlayTouchTap}/>
       </div>
     );
   },
