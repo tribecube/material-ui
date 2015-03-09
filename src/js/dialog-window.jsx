@@ -165,8 +165,11 @@ var DialogWindow = React.createClass({
   },
 
   _handleOverlayTouchTap: function() {
-    this.dismiss();
-    if (this.props.onClickAway) this.props.onClickAway();
+    if (this.props.onClickAway) {
+      this.props.onClickAway();
+    } else {
+      this.dismiss();
+    }
   },
 
   _handleWindowKeyUp: function(e) {
