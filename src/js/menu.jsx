@@ -164,7 +164,7 @@ var Menu = React.createClass({
     });
 
     return (
-      <Paper ref="paperContainer" zDepth={this.props.zDepth} className={classes}>
+      <Paper ref="paperContainer" zDepth={this.props.zDepth} className={classes} onContextMenu={this.props.onContextMenu}>
         {this._getChildren()}
       </Paper>
     );
