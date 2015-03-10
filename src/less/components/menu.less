@@ -1,14 +1,19 @@
 .mui-menu {
 
-  &.top { /*unsupported by now*/ }
-  &.middle { top: 4px !important; }
-  &.bottom { top: 40px !important; }
+  &:not(.context-menu) {
+    &.top { /*unsupported by now*/ }
+    &.middle { top: 4px !important; }
+    &.bottom { top: 40px !important; }
 
-  &.right { left: 28px !important; }
-  &.center { }
-  &.left { right: 4px !important; }
+    &.right { left: 28px !important; }
+    &.center { }
+    &.left { right: 4px !important; }
+  }
 
-  * { .ease-out; }
+  &.context-menu {
+    &.mui-open { opacity: 1; }
+  }
+
 
   background-color: @menu-background-color;
 
