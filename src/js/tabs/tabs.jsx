@@ -47,11 +47,17 @@ var Tabs = React.createClass({
   },
 
   render: function(){
-    var _this = this; 
-    var width = this.state.fixed ?
-      this.state.width/this.props.children.length :
-      this.props.tabWidth;
+    var _this = this;
+    //var width = this.state.fixed ?
+    //  this.state.width/this.props.children.length :
+    //  this.props.tabWidth;
+
+    var width = 100/this.props.children.length;
     var left = width * this.state.selectedIndex || 0;
+
+    var widthPerc = width + "%";
+    var leftPerc = left + "%";
+
     var currentTemplate;
     var tabs = React.Children.map(this.props.children, function(tab, index){
       if(tab.type.displayName === "Tab"){
@@ -60,7 +66,7 @@ var Tabs = React.createClass({
             key: index,
             selected: _this.state.selectedIndex === index,
             tabIndex: index,
-            width: width,
+            width: widthPerc,
             handleTouchTap: _this.handleTouchTap
           })
       } else {
@@ -74,7 +80,7 @@ var Tabs = React.createClass({
         <div className="mui-tab-item-container">
           {tabs}
         </div>
-        <InkBar left={left} width={width}/>
+        <InkBar left={leftPerc} width={widthPerc}/>
         <TabTemplate>
           {currentTemplate}
         </TabTemplate>
