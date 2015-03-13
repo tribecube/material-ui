@@ -23,7 +23,8 @@ var MenuItem = React.createClass({
     toggle: React.PropTypes.bool,
     onClick: React.PropTypes.func,
     onToggle: React.PropTypes.func,
-    selected: React.PropTypes.bool
+    selected: React.PropTypes.bool,
+    disabled: React.PropTypes.bool
   },
 
   statics: {
@@ -37,9 +38,6 @@ var MenuItem = React.createClass({
   },
 
   render: function() {
-    var classes = this.getClasses('mui-menu-item', {
-      'mui-is-selected': this.props.selected
-    });
     var icon;
     var data;
     var iconRight;
@@ -53,6 +51,12 @@ var MenuItem = React.createClass({
     if (this.props.number !== undefined) number = <span className="mui-menu-item-number">{this.props.number}</span>;
     if (this.props.attribute !== undefined) attribute = <span className="mui-menu-item-attribute">{this.props.attribute}</span>;
     if (this.props.toggle) toggle = <Toggle onToggle={this._handleToggle} />;
+
+    var classes = this.getClasses('mui-menu-item', {
+      'mui-is-selected': this.props.selected,
+      'mui-is-disabled': this.props.disabled,
+      'mui-has-icon': icon
+    });
 
     return (
       <div
@@ -74,11 +78,11 @@ var MenuItem = React.createClass({
   },
 
   _handleTouchTap: function(e) {
-    if (this.props.onClick) this.props.onClick(e, this.props.index);
+    if (this.props.onClick && !this.props.disabled) this.props.onClick(e, this.props.index);
   },
 
   _handleToggle: function(e, toggled) {
-    if (this.props.onToggle) this.props.onToggle(e, this.props.index, toggled);
+    if (this.props.onToggle && !this.props.disabled) this.props.onToggle(e, this.props.index, toggled);
   }
 
 });

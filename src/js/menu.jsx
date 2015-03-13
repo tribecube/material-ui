@@ -132,13 +132,12 @@ var Menu = React.createClass({
         for (var jx = 0; jx < el.childNodes[ix].childNodes.length; jx++) {
           var aNode = el.childNodes[ix].childNodes[jx];
           newHeight += aNode.offsetHeight;
-          var widthSpacing = $(aNode).outerWidth(true) - $(aNode).width();
+          var aNodeWidth = $(aNode).outerWidth(true) - $(aNode).width(); // get outer spacing (padding, ...)
           for (var kx = 0; kx < aNode.childNodes.length; kx++) {
-            var innerNode = aNode.childNodes[kx];
-            var testWidth = innerNode.offsetWidth + widthSpacing;
-            if (testWidth > newWidth) {
-              newWidth = testWidth;
-            }
+            aNodeWidth += $(aNode.childNodes[kx]).outerWidth(true); // concat content outer width, note that this may be unsafe if parent is hidden
+          }
+          if (aNodeWidth > newWidth) { // check if row is wider then other already calculated
+            newWidth = aNodeWidth;
           }
         }
       }
@@ -211,10 +210,12 @@ var Menu = React.createClass({
           this._nestedChildren.push(i);
           break;
 
+
         default:
           itemComponent = (
             <MenuItem
               selected={isSelected}
+              disabled={menuItem.disabled}
               key={i}
               index={i}
               icon={menuItem.icon}
@@ -261,7 +262,7 @@ var Menu = React.createClass({
         //that other nested menus can be shown
         CssEvent.onTransitionEnd(el, function() {
           //Make sure the menu is open before setting the overflow.
-          //This is to accout for fast clicks
+          //This is to account for fast clicks
           if (this.props.visible) innerContainer.style.overflow = 'visible';
         }.bind(this));
 
