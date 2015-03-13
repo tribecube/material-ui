@@ -20,6 +20,26 @@
       padding-right: (@desktop-gutter-less*2);
       height: @desktop-drop-down-menu-item-height;
       line-height: @desktop-drop-down-menu-item-height;
+      padding-left: @desktop-gutter-mini;
+
+      .mui-icon {
+        float: none;
+        font-size: 16px;
+        margin-right: @desktop-gutter-mini;
+        overflow: visible;
+        color: @toolbar-icon-color;
+      }
+
+      &:hover {
+        .mui-icon {
+          color: @dark-black;
+        }
+      }
+
+      .mui-menu-item-content {
+        font-size: inherit;
+        line-height: inherit;
+      }
     }
   }
 

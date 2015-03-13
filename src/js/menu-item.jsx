@@ -62,7 +62,7 @@ var MenuItem = React.createClass({
         onClick={this._handleTouchTap}>
 
         {icon}
-        {this.props.children}
+        <span className="mui-menu-item-content">{this.props.children}</span>
         {data}
         {attribute}
         {number}
