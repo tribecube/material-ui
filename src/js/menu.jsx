@@ -147,11 +147,16 @@ var Menu = React.createClass({
 
     //Update the menu width
     el.style.width = menuWidth;
+    this._initialMenuWidth = KeyLine.getIncrementalDim(newWidth);
 
     //Open the menu
     this._initialMenuHeight = newHeight;
 
     if (this.props.visible !== prevProps.visible) this._renderVisibility();
+  },
+
+  getComputedSize: function() {
+    return [this._initialMenuWidth, this._initialMenuHeight];
   },
 
   render: function() {
