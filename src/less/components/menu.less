@@ -9,8 +9,9 @@
     &.center { }
     &.left { right: 4px !important; }
 
-    * { .ease-out(@property: height, opacity); }
+    * { transition: height, width, opacity, padding 450ms @ease-out-function 0ms; }
   }
+
 
   .mui-menu-item {
     font-size: @desktop-drop-down-menu-font-size;
