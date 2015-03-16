@@ -24,7 +24,8 @@ var MenuItem = React.createClass({
     onClick: React.PropTypes.func,
     onToggle: React.PropTypes.func,
     selected: React.PropTypes.bool,
-    disabled: React.PropTypes.bool
+    disabled: React.PropTypes.bool,
+    userData: React.PropTypes.object
   },
 
   statics: {
