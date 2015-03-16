@@ -6,7 +6,8 @@ var Toggle = require('./toggle.jsx');
 var Types = {
   LINK: 'LINK',
   SUBHEADER: 'SUBHEADER',
-  NESTED: 'NESTED'
+  NESTED: 'NESTED',
+  SEPARATOR: 'SEPARATOR'
 };
 
 var MenuItem = React.createClass({

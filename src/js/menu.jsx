@@ -196,6 +196,12 @@ var Menu = React.createClass({
           );
           break;
 
+        case MenuItem.Types.SEPARATOR:
+          itemComponent = (
+            <div key={i} index={i} className="mui-menu-separator"><hr /></div>
+          );
+          break;
+
         case MenuItem.Types.NESTED:
           itemComponent = (
             <NestedMenuItem
