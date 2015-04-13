@@ -51,14 +51,16 @@ var EnhancedTextarea = React.createClass({
           ref="shadow"
           className="mui-enhanced-textarea-shadow"
           rows={this.props.rows}
-          tabIndex="-1" />
+          tabIndex="-1"
+          disabled={this.props.disabled} />
         <textarea
           {...other}
           ref="input"
           className={textareaClassName}
           rows={this.props.rows}
           style={style}
-          onChange={this._handleChange} />
+          onChange={this._handleChange}
+          disabled={this.props.disabled} />
       </div>
     );
   },

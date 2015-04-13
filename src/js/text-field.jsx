@@ -103,7 +103,8 @@ var TextField = React.createClass({
       className: 'mui-text-field-input',
       id: inputId,
       onBlur: this._handleInputBlur,
-      onFocus: this._handleInputFocus
+      onFocus: this._handleInputFocus,
+      disabled: this.props.disabled
     };
 
     if (!this.props.hasOwnProperty('valueLink')) {
