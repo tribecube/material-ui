@@ -35,18 +35,10 @@
       font-size: inherit;
       margin-right: @desktop-gutter-mini;
       overflow: visible;
-      width: @desktop-drop-down-menu-font-size;
+      width: 16px;
+      font-size: 16px;
       line-height: inherit !important;
       padding-left: 0 !important;
-    }
-
-    &.mui-is-disabled {
-      color: @toolbar-icon-color;
-      cursor: default;
-      &:hover {
-        color: @toolbar-icon-color !important;
-        background-color: transparent;
-      }
     }
 
     .mui-menu-item-content {
@@ -57,10 +49,36 @@
     &:hover {
       background-color: #f3f3f3;
     }
+
+    &.mui-is-disabled {
+      color: fade(@tcDarkGrey, 40%);
+      cursor: default;
+      &:hover {
+        color: fade(@tcDarkGrey, 40%) !important;
+        background-color: transparent;
+      }
+    }
   }
 
   &.context-menu {
     &.mui-open { opacity: 1; }
+    &.mui-menu {
+      .mui-menu-item {
+        color: @tcDarkGrey;
+        line-height: 32px;
+        height: 32px;
+        padding: 0 16px 0px 16px;
+
+        &.mui-is-disabled {
+          color: fade(@tcDarkGrey, 40%);
+          cursor: default;
+          &:hover {
+            color: fade(@tcDarkGrey, 40%) !important;
+            background-color: transparent;
+          }
+        }
+      }
+    }
   }
 
   background-color: @menu-background-color;
