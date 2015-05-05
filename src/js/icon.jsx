@@ -17,8 +17,13 @@ var Icon = React.createClass({
       classes = this.getClasses('mui-icon ' + iconClassName);
 
 
-
-    if(icon.indexOf("fa fa")>-1) {
+    if(icon.indexOf("mdi mdi")>-1) {
+      return (
+        <span {...other} className="mui-icon">
+          <i className={icon} style={{verticalAlign: "middle"}}/>
+        </span>
+      );
+    } else if(icon.indexOf("fa fa")>-1) {
       return (
         <span {...other} className="mui-icon">
           <i className={icon} style={{verticalAlign: "middle"}}/>
