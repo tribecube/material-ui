@@ -16,6 +16,7 @@ var DialogWindow = React.createClass({
     contentClassName: React.PropTypes.string,
     openImmediately: React.PropTypes.bool,
     onClickAway: React.PropTypes.func,
+    onESC: React.PropTypes.func,
     onDismiss: React.PropTypes.func,
     onShow: React.PropTypes.func,
     repositionOnUpdate: React.PropTypes.bool
@@ -174,7 +175,11 @@ var DialogWindow = React.createClass({
 
   _handleWindowKeyUp: function(e) {
     if (e.keyCode == KeyCode.ESC) {
-      this.dismiss();
+      if (this.props.onESC) {
+        this.props.onESC();
+      } else {
+        this.dismiss();
+      }
     }
   }
 
