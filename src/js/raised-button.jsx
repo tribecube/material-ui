@@ -46,6 +46,9 @@ var RaisedButton = React.createClass({
       'mui-is-secondary': !primary && secondary
     });
 
+    var disabledOverlay = null;
+    if (this.props.disabled) { disabledOverlay = <div className="mui-raised-button-disabled-overlay"></div>; }
+
     return (
       <Paper className={classes} zDepth={this.state.zDepth}>
         <EnhancedButton {...other}
@@ -57,6 +60,7 @@ var RaisedButton = React.createClass({
           onTouchEnd={this._handleTouchEnd}>
           <span className="mui-raised-button-label">{label}</span>
         </EnhancedButton>
+        {disabledOverlay}
       </Paper>
     );
   },
