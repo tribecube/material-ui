@@ -49,6 +49,10 @@ var RaisedButton = React.createClass({
     var disabledOverlay = null;
     if (this.props.disabled) { disabledOverlay = <div className="mui-raised-button-disabled-overlay"></div>; }
 
+    var icon = null;
+    if (this.props.icon) {
+      icon = this.props.icon;
+    }
     return (
       <Paper className={classes} zDepth={this.state.zDepth}>
         <EnhancedButton {...other}
@@ -58,7 +62,7 @@ var RaisedButton = React.createClass({
           onMouseOut={this._handleMouseOut}
           onTouchStart={this._handleTouchStart}
           onTouchEnd={this._handleTouchEnd}>
-          <span className="mui-raised-button-label">{label}</span>
+          <span className="mui-raised-button-label">{label}</span>{icon}
         </EnhancedButton>
         {disabledOverlay}
       </Paper>
