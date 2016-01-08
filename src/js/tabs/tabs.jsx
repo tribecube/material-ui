@@ -10,9 +10,11 @@ var Tabs = React.createClass({
   },
 
   getInitialState: function(){
-    return {
-      selectedIndex: 0
-    };
+    var state = { selectedIndex: 0 };
+    if (this.props.selectedIndex != null && this.props.selectedIndex != undefined) {
+      state.selectedIndex = this.props.selectedIndex;
+    }
+    return state;
   },
 
   getEvenWidth: function(){
@@ -37,6 +39,14 @@ var Tabs = React.createClass({
       width: this.getEvenWidth(),
       fixed: true
     });
+  },
+
+  componentWillReceiveProps: function(props) {
+    var state = {};
+    if (props.selectedIndex != null && props.selectedIndex != undefined) {
+      state.selectedIndex = props.selectedIndex;
+    }
+    this.setState(state);
   },
 
   handleTouchTap: function(tabIndex, tab){
